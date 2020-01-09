@@ -292,5 +292,9 @@ sbt:justribentrop_cloud>
 ## Play with Scala+Jupiter
 ## Play with Scala+Spark+Jupiter
 
-???
+??? --- Общие вопросы ---
 Не понимаю, каким образом в состав SBT включена Scala
+
+??? --- Термины ---
+Classpath
+self-contained app
