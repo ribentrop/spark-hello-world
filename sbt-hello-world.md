@@ -1,3 +1,8 @@
+
+## Play with Scala online
+https://scalafiddle.io/
+https://scastie.scala-lang.org/
+
 ## Play with Sbt 
 - Зачем нужен sbt
 - должно работать на винде, но не рекомендую. У меня меня не завелось, диагноситка непонятна и т.п.
