@@ -1,9 +1,17 @@
-### Play with Sbt 
-Зачем нужна sbt. ~можно в idea ~ссылка на sbt
+## Play with Sbt 
+- Зачем нужен sbt
 - должно работать на винде, но не рекомендую. У меня меня не завелось, диагноситка непонятна и т.п.
-- sbt - по сути интерактивный интерпретатор scala, 
+- sbt - по сути интерактивный интерпретатор scala
+
 Цели:
+- представление о стурктуре приложения|проекта Scala
+- зависимости и тп.
 - понимать структуту папок (быть способным создать проект Spark самостоятельно без sbt)
+- зачем нужны тесты
+
+Лаба:
+- пишем простейше Scala приложение с использованием sbt, готовим для выполнения (бинарники), готовим для переноса в IDEA
+
 #### Install JDK 
 You must first install a JDK. We recommend AdoptOpenJDK JDK 8 or JDK 11.
 sudo yum install java-1.8.0-openjdk-devel
@@ -19,9 +27,11 @@ https://www.scala-sbt.org/1.x/docs/Directories.html
 https://medium.com/luckspark/scala-spark-tutorial-1-hello-world-7e66747faec
 сделать tree и посмотреть структуру папок
 #### Create a minimum sbt build 
+```sh
 $ mkdir foo-build
 $ cd foo-build
 $ touch build.sbt
+```
 #### Compile a project  
 ```sh
 $ sbt
@@ -35,24 +45,7 @@ We can save the ad-hoc settings using session save.
 sbt:foo-build> session save
 [info] Reapplying settings...
 ```
-
-
-
---- Лаба ---
-Пройти полный путь от подготовки до установки приложения: https://www.scala-sbt.org/1.x/docs/sbt-by-example.html
-Цели
-- представление о стурктуре приложения|проекта Scala
-- зачем нужны тесты
-- зависимости и тп.
-
-### Export Sbt project to Idea, Modify it... 
-
-=== Общие вопросы ===
-что есть Scala программа ? - Scala pachage / Scala main class / 
-проиллюстрировать работу Spark приложений на примере нашей платформы
-
-
-
+При созранении сесии все текущие настройки окружения, выполненные из командной строки sbt> сохраняются в build.sbt
 ### Sbt by example 
 Let’s start with examples rather than explaining how sbt works or why.
 #### Create a minimum sbt build 
