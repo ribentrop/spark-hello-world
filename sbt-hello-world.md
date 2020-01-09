@@ -255,3 +255,42 @@ $ unzip -o -d /tmp/someother /tmp/foo-build/target/universal/hello-0.1.0-SNAPSHO
 $ ./hello-0.1.0-SNAPSHOT/bin/hello
 ```
 Интересно так же заголянуть в распакованный архив, посмотреть его внутренности.
+## Play with sbt+Scala+Spark
+#### Установить Standalone spark
+#### Написать приложение на spark
+#### Выполнить приложение на spark
+
+## Play with Idea
+#### Установка Idea
+#### Устанвока Scala плагина
+#### Создание нового scala проекта в Idea
+file new project
+Выбрать версии JDK, sbt, Scala с учетом последующего переноса в sbt 
+Версии можно посмотреть так:
+```sh
+[justribentrop_cloud@sbt-scala-spark ~]$ java -version
+openjdk version "1.8.0_232"
+OpenJDK Runtime Environment (build 1.8.0_232-b09)
+OpenJDK 64-Bit Server VM (build 25.232-b09, mixed mode)
+[justribentrop_cloud@sbt-scala-spark ~]$ sbt
+...
+sbt:justribentrop_cloud> scalaVersion
+[info] 2.12.10
+sbt:justribentrop_cloud> sbtVersion
+[info] 1.3.6
+sbt:justribentrop_cloud> 
+```
+Как я понимаю, при создании нового проекта создается сущность, аналогичная запуску команды sbt в папке проекта в командной строке (см. Play with sbt). 
+
+#### Импорт проекта из sbt в Idea
+архивируем папку с проектом, вытаскиваем наружу, извлекаем из архива
+натравливаем Idea на корень проекта
+далее по https://www.lagomframework.com/documentation/1.5.x/java/IntellijSbtJava.html
+
+#### Запуск, модификация и экспорт обратно в sbt
+
+## Play with Scala+Jupiter
+## Play with Scala+Spark+Jupiter
+
+???
+Не понимаю, каким образом в состав SBT включена Scala
