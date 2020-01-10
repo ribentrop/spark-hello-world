@@ -1,59 +1,55 @@
 
+Видюшку найти
+
 ## Play with Scala online
 https://scalafiddle.io/
 https://scastie.scala-lang.org/
 
 ## Play with Sbt 
-- Зачем нужен sbt
-- должно работать на винде, но не рекомендую. У меня меня не завелось, диагноситка непонятна и т.п.
-- sbt - по сути интерактивный интерпретатор scala
+Здесь описано создане простого Scala проекта  c использованием Scala building tool. Spark пока не трогаем, будем иметь дело только со Scala. Если не хочется возиться с ручной подготовкой проекта и сразу хочется Spark, то можно перейти к п.ХХХ
+#### Источники
+Что такое sbt и зачем он нужен, можно почитать вот тут: ХХХ
+--- ???--- Suppose we wish to write a self-contained application using the Spark API. We will walk through a simple application in Scala (with sbt), Java (with Maven), and Python (pip).
 
-Цели:
+Инструкция по установке есть адаптированный мануал отсюда:
+https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html
+
+Все манипуляции с проектом есть адаптированный маиуал отсюда:
+https://www.scala-sbt.org/1.x/docs/sbt-by-example.html
+
+#### Что будем делать:
+ХХХ
+Цели ХХХ:
 - представление о стурктуре приложения|проекта Scala
 - зависимости и тп.
 - понимать структуту папок (быть способным создать проект Spark самостоятельно без sbt)
 - зачем нужны тесты
-
-Лаба:
-- пишем простейше Scala приложение с использованием sbt, готовим для выполнения (бинарники), готовим для переноса в IDEA
-
+#### Окружение
+Все работы велись на Centos:
+```sh
+[justribentrop_cloud@sbt-scala-spark-2 ~]$ sudo cat /etc/centos-release
+CentOS Linux release 7.7.1908 (Core)
+```
+Все действия с sbt должны работать и на Windows, но у меня не завелось. Пробовать не рекомендую.
+### Sbt Example
+Let’s start with examples rather than explaining how sbt works or why.
+#### Update repos
+```sh
+sudo yum update -y
+```
 #### Install JDK 
 You must first install a JDK. We recommend AdoptOpenJDK JDK 8 or JDK 11.
+```sh
 sudo yum install java-1.8.0-openjdk-devel
+```
 #### Installing sbt 
 ```sh
 curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
-sudo yum install sbt
+sudo yum install sbt -y
 ```
-Структура папок проекта объявняется здесь (найти еще):
-https://medium.com/@wangyunlongau/scala-sbt-project-directory-structure-c254bb08623e
-https://www.scala-sbt.org/1.x/docs/Directories.html
-Можно создать структуру папок самостоятельно (найти еще):
-https://medium.com/luckspark/scala-spark-tutorial-1-hello-world-7e66747faec
-сделать tree и посмотреть структуру папок
 #### Create a minimum sbt build 
-```sh
-$ mkdir foo-build
-$ cd foo-build
-$ touch build.sbt
-```
-#### Compile a project  
-```sh
-$ sbt
-sbt:foo-build> compile
-```
-что происходит при компиляции? Возникает:
-/home/justribentrop_cloud/foo-build/target/scala-2.12/classes/example/Hello.class
-#### Save session
-We can save the ad-hoc settings using session save.
-```sh
-sbt:foo-build> session save
-[info] Reapplying settings...
-```
-При созранении сесии все текущие настройки окружения, выполненные из командной строки sbt> сохраняются в build.sbt
-### Sbt by example 
-Let’s start with examples rather than explaining how sbt works or why.
-#### Create a minimum sbt build 
+Далее будем создавать проект в "полуавтоматическом" режиме
+Создадим главную папку проекта и основной конфигурационный файл проекта - build.sbt
 ```sh
 $ mkdir foo-build
 $ cd foo-build
@@ -69,27 +65,36 @@ $ sbt
 [info] sbt server started at local:///Users/eed3si9n/.sbt/1.0/server/abc4fb6c89985a00fd95/sock
 sbt:foo-build>
 ```
-При запуске комады sbt создастеся стурктура папок проекта.
-Про структуру папок проекта можно посмотреть тут:
+При этом sbt подтянет дефорлные зависимости для проекта и создаст структуру папок дефолтного проекта. Можно создавать проекты по шаблонам (например, проект спецмально дляисполнеиня в Spark), но об этом позже.
+
+Про структуру папок проекта можно почитать тут:
 https://medium.com/@wangyunlongau/scala-sbt-project-directory-structure-c254bb08623e
 https://www.scala-sbt.org/1.x/docs/Directories.html
-Можно так же выполнить команду #tree и посмотреть структуру папок
-Забегая вперед - создавая Scala приложение без sbt можно создать структуру папок самостоятельно ручками (https://medium.com/luckspark/scala-spark-tutorial-1-hello-world-7e66747faec). По сути sbt делает всю рутину за нас, на то он и инстумент для автоматизации построения приложений. Рутина - создание папок, разрешение зависимостей, подкачка библиотек и т.п.
+Можно сделать  tree и посмотреть структуру папок глазами:
+```sh
+$ sudo yum install tree -y
+$ tree
+```
 
+Забегая вперед - создавая Scala приложение без sbt можно создать структуру папок самостоятельно ручками (https://medium.com/luckspark/scala-spark-tutorial-1-hello-world-7e66747faec). 
+Sbt делает всю рутину за нас, на то он и инстумент для автоматизации построения приложений. Рутина в нашем случае это - создание папок, разрешение зависимостей, подкачка библиотек и т.п.
 #### Exit sbt shell 
-To leave sbt shell, type exit or use Ctrl+D (Unix)
+To leave sbt shell, type exit or use Ctrl+D (Unix) or Ctrl+Z (Windows).
 ```sh
 sbt:foo-build> exit
 ```
-#### Compile a project
-As a convention, we will use the sbt:...> or > prompt to mean that we’re in the sbt interactive shell.
+#### Compile a project  
+Запустим sbt и скомпилируем пустой проект
 ```sh
 $ sbt
 sbt:foo-build> compile
 ```
-Что происходит при компиляции - ?
+Подробнее. что есть compile и прочие команды sbt, которые еще будут впереди (compile,package,run,test,assembly), можно почитать тут:
+https://alvinalexander.com/scala/sbt-how-to-compile-run-package-scala-project
+Компиляция это компиляция, можно запускать скомпилированное, но исполняемого файла не создается.
+Т.к. в нашем случае нет исходников, то compile не создаст ничего такого, что можно было бы запустить.
 #### Create a source file 
-Leave the previous command running. From a different shell or in your file manager create in the foo-build directory the following nested directories: src/main/scala/example. Then, create Hello.scala in the example directory using your favorite editor as follows:
+From a  shell or in your file manager create in the foo-build directory the following nested directories: src/main/scala/example. Then, create Hello.scala in the example directory using your favorite editor as follows:
 ```sh
 package example
 
@@ -98,7 +103,7 @@ object Hello extends App {
 }
 ```
 #### Recompile on code change  
-Run 'recompile' command again:
+Run 'compile' command again:
 ```sh
 $ sbt
 sbt:foo-build> compile
@@ -106,6 +111,7 @@ sbt:foo-build> compile
 [info] Done compiling.
 [success] Total time: 2 s, completed May 6, 2018 3:53:42 PM
 ```
+Sbt создал (как минимум) скомпилированные классы в /home/justribentrop_cloud/foo-build/target/scala-2.12/classes/example. Это бинарники, больше ничего о них не знаю.
 #### Run a previous command 
 From sbt shell, press up-arrow twice to find the compile command that you executed at the beginning.
 #### Run your app 
@@ -118,6 +124,12 @@ Hello
 [success] Total time: 1 s, completed May 6, 2018 4:10:44 PM
 ```
 Что происходит при запуске - ?
+
+# ------------------------------------
+# продолжить отсюда
+# ------------------------------------
+
+
 #### Set ThisBuild / scalaVersion from sbt shell 
 ```sh
 sbt:foo-build> set ThisBuild / scalaVersion := "2.12.7"
@@ -128,6 +140,20 @@ sbt:foo-build> set ThisBuild / scalaVersion := "2.12.7"
 sbt:foo-build> scalaVersion
 [info] 2.12.10
 ```
+#### Save/load session
+В командной строке sbt можно определять версии spark/scala для своего проекта, подключать зависимости. Все выполеннное в команднойстроке sbt можно сохранить как результат работы сессии в основном настроечном файле проекта build.sbt 
+We can save the ad-hoc settings using session save.
+```sh
+sbt:foo-build> session save
+[info] Reapplying settings...
+```
+При созранении сесии все текущие настройки окружения, выполненные из командной строки sbt> сохраняются в build.sbt
+
+
+#### Package - ???
+
+
+
 #### Save the session to build.sbt 
 We can save the ad-hoc settings using session save.
 Что происходит при сохранении сессии - ?
@@ -172,6 +198,11 @@ sbt:Hello> test
 [info] No tests were executed.
 [success] Total time: 7 s, completed Jan 9, 2020 11:14:32 AM
 ```
+
+
+
+
+
 #### Write a test
 Leaving the previous command running, create a file named src/test/scala/HelloSpec.scala using an editor:
 ```sh
