@@ -52,7 +52,7 @@ sudo vim spark-env.sh
 ```
 And set the following parameters.
 ```sh
-export SPARK_MASTER_HOST='Spark Host IP'
+export SPARK_MASTER_HOST=<'Spark Host IP'>
 export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
 ```
 ### Add Workers
