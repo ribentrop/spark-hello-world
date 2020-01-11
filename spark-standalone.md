@@ -48,7 +48,7 @@ $ cp spark-env.sh.template spark-env.sh
 ```
 Now edit the configuration file spark-env.sh.
 ```sh
-sudo vim spark-env.sh
+$ vim spark-env.sh
 ```
 And set the following parameters.
 ```sh
@@ -58,7 +58,7 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
 ### Add Workers
 Edit the configuration file slaves in (/usr/local/spark/conf).
 ```sh
-sudo vim slaves
+$ vim slaves
 ```
 And add the following entries.
 ```sh
@@ -67,8 +67,8 @@ And add the following entries.
 ### Start Spark
 To start the spark cluster, run the following command on master.
 ```sh
-cd /usr/local/spark
-./sbin/start-all.sh
+$ cd /usr/local/spark
+$ ./sbin/start-all.sh
 ```
 ### Spark Web UI
 Browse the Spark UI to know about worker nodes, running application, cluster resources.
