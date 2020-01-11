@@ -1,25 +1,25 @@
 ## Installing Spark stanalone
-#### OS version
+### OS version
 These steps were reproduced on: CentOS 7.7
-#### Before You Install
+### Before You Install
 Make sure that you have passwordlees ssh access to localhost (it is also Spark host)
-#### Disabling the Firewall
+### Disabling the Firewall
 Disable firewall for ports 8080,8081. 
 Optionally 4040+ (4041,4042,...) ports for spark App Web UI.
-#### Required Privileges
+### Required Privileges
 The installation is under regular user, but sudo needed for 'yum install'
-#### Updare repo
+### Updare repo
 ```sh
 $ sudo yum update -y
 ```
-#### Install wget
+### Install wget
 ```sh
 $ sudo yum install wget -y
 ```
 ### Edit hosts file 
 Add a record to /etc/hosts file to be able to address Spark Host by hostname.
 Attetintion! Avoid hostnames with underscores [underscores](https://stackoverflow.com/questions/2180465/can-domain-name-subdomains-have-an-underscore-in-it).
-#### Install JDK
+### Install JDK
 Install Java, set env virables and renew env virables for current session
 ```sh
 $ sudo yum install java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64 -y
@@ -27,14 +27,14 @@ $ echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' >> ~/.bash_profile
 $ echo 'export JRE_HOME=/usr/lib/jvm/jre' >> ~/.bash_profile
 $ source ~/.bash_profile
 ```
-#### Install Spark
+### Install Spark
 Start executing commands being at home directory of non-root user
 ```sh
 $ wget http://apache-mirror.rbc.ru/pub/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
 $ tar -xvzf spark-2.4.4-bin-hadoop2.7.tgz 
 $ sudo mv spark-2.4.4-bin-hadoop2.7 /usr/local/spark
 ```
-#### Set Spark environment
+### Set Spark environment
 Set SPARK_HOME and add path to Spark executables to PATH.
 ```sh
 $ echo "export SPARK_HOME=/usr/local/spark" >> ~/.bash_profile
@@ -55,7 +55,7 @@ And set the following parameters.
 export SPARK_MASTER_HOST='Spark Host IP'
 export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
 ```
-#### Add Workers
+### Add Workers
 Edit the configuration file slaves in (/usr/local/spark/conf).
 ```sh
 sudo vim slaves
@@ -64,13 +64,13 @@ And add the following entries.
 ```sh
 <Spark Host name>
 ```
-#### Start Spark
+### Start Spark
 To start the spark cluster, run the following command on master.
 ```sh
 cd /usr/local/spark
 ./sbin/start-all.sh
 ```
-#### Spark Web UI
+### Spark Web UI
 Browse the Spark UI to know about worker nodes, running application, cluster resources.
 Spark Master UI
 ```sh
