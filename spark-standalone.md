@@ -18,7 +18,7 @@ $ sudo yum install wget -y
 ```
 ### Edit hosts file 
 Add a record to /etc/hosts file to be able to address Spark Host by hostname.
-Attetintion! Avoid hostnames with [underscores](https://stackoverflow.com/questions/2180465/can-domain-name-subdomains-have-an-underscore-in-it).
+Attetntion! Avoid hostnames with [underscores](https://stackoverflow.com/questions/2180465/can-domain-name-subdomains-have-an-underscore-in-it).
 ### Install JDK
 Install Java, set env virables and renew env virables for current session
 ```sh
