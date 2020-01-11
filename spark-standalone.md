@@ -74,5 +74,5 @@ cd /usr/local/spark
 Browse the Spark UI to know about worker nodes, running application, cluster resources.
 Spark Master UI
 ```sh
-http://<MASTER-IP>:8080/
+http://<Spark host>:8080/
 ```
