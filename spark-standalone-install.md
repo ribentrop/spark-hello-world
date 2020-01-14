@@ -32,7 +32,7 @@ Start executing commands being at home directory of non-root user
 ```sh
 $ wget http://apache-mirror.rbc.ru/pub/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
 $ tar -xvzf spark-2.4.4-bin-hadoop2.7.tgz 
-$ mv spark-2.4.4-bin-hadoop2.7 /usr/local/spark
+$ sudo mv spark-2.4.4-bin-hadoop2.7 /usr/local/spark
 ```
 ### Set Spark environment
 Set SPARK_HOME and add path to Spark executables to PATH.
