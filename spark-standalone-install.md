@@ -1,4 +1,4 @@
-## Installing Spark stanalone
+## Installing Spark "stanalone"
 ### OS version
 These steps were reproduced on: CentOS 7.7
 ### Before You Install
@@ -8,7 +8,7 @@ Disable firewall for ports 8080,8081.
 Optionally 4040+ (4041,4042,...) ports for spark App Web UI.
 ### Required Privileges
 The installation is under regular user, but sudo needed for 'yum install'
-### Updare repo
+### Update repo
 ```sh
 $ sudo yum update -y
 ```
@@ -23,6 +23,9 @@ Attetntion! Avoid hostnames with [underscores](https://stackoverflow.com/questio
 Install Java, set env virables and renew env virables for current session
 ```sh
 $ sudo yum install java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64 -y
+```
+Optionally set JAVA environment variables to your profile to use Java for other apps:
+```sh
 $ echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' >> ~/.bash_profile
 $ echo 'export JRE_HOME=/usr/lib/jvm/jre' >> ~/.bash_profile
 $ source ~/.bash_profile
@@ -48,7 +51,7 @@ $ cp spark-env.sh.template spark-env.sh
 ```
 Now edit the configuration file spark-env.sh.
 ```sh
-$ vim spark-env.sh
+$ vi spark-env.sh
 ```
 And set the following parameters.
 ```sh
@@ -58,7 +61,7 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
 ### Add Workers
 Edit the configuration file slaves in (/usr/local/spark/conf).
 ```sh
-$ vim slaves
+$ vi slaves
 ```
 And add the following entries.
 ```sh
@@ -76,3 +79,7 @@ Spark Master UI
 ```sh
 http://<Spark host>:8080/
 ```
+#### OT lab specifics and other
+- set up proxy for yum
+- set up proxy for wget
+- set up passwordless access
